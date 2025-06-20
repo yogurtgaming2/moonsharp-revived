@@ -17,7 +17,7 @@ This is a fork of MoonSharp that is tailored for Unity projects. as of June 2025
 > ![Step 3](step3.png)  
 > Enter **`https://github.com/YogurtGaming2/unity-moonsharp.git`**
 
-**Usage**
+## Usage in MonoBehaviour scripts
 
 Create a new script and include the MoonSharp namespace:
 ```csharp
@@ -38,7 +38,7 @@ void Start()
 		return fact(5)";
 	DynValue res = Script.RunString(script);
 	Debug.Log(res.Number);
-}
+	}
 ```
 For more in-depth tutorials, samples, etc. please refer to http://www.moonsharp.org/getting_started
 
@@ -55,15 +55,12 @@ Features:
 * Threading-friendly Async methods
 * Supports dumping/loading bytecode for obfuscation and quicker parsing at runtime
 * An embedded JSON parser (with no dependencies) to convert between JSON and Lua tables
-* Easy opt-out of Lua standard library modules to sandbox what scripts can access
+* Easy opt-out of Lua standard library modules to sandbox what scripts can access (`Globals`, `CoreModules` & more)
 * Easy to use error handling (script errors are exceptions)
 * Support for coroutines, including invocation of coroutines as C# iterators 
 * REPL interpreter, plus facilities to easily implement your own REPL in few lines of code
-* Complete XML help, and walkthroughs on http://www.moonsharp.org
 
 For highlights on differences between MoonSharp and standard Lua, see http://www.moonsharp.org/moonluadifferences
-
-Please see http://www.moonsharp.org for downloads, infos, tutorials, etc.
 
 
 **License**

@@ -1,5 +1,5 @@
 {
-  "name": "com.yogurtgaming2.moonsharp",
+  "name": "unity-moonsharp",
   "version": "3.0.0",
   "displayName": "MoonSharp",
   "description": "Fork of MoonSharp for Unity, UPM-ready and up to date.",
