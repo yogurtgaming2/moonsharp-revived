@@ -1,0 +1,18 @@
+{
+  "name": "com.yogurtgaming2.moonsharp",
+  "version": "3.0.0",
+  "displayName": "MoonSharp",
+  "description": "Fork of MoonSharp for Unity, UPM-ready and up to date.",
+  "documentationUrl": "https://www.moonsharp.org/getting_started",
+  "changelogUrl": "https://www.moonsharp.org/changelog",
+  "licensesUrl": "https://raw.githubusercontent.com/moonsharp-devs/moonsharp/master/LICENSE",
+ "keywords": [
+    "MoonSharp",
+    "Lua",
+    "Scripting"
+  ],
+  "author": {
+    "name": "YogurtGaming2",
+    "url": "https://github.com/YogurtGaming2/unity-moonsharp"
+  }
+}
