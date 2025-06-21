@@ -1,4 +1,4 @@
-MoonSharp **Unity**
+MoonSharp Unity
 =========
 https://www.moonsharp.org
 
