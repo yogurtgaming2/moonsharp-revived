@@ -86,8 +86,7 @@ namespace MoonSharp.Interpreter.CoreLib
 			DynValue vi = args.AsType(1, "byte", DataType.Number, true);
 			DynValue vj = args.AsType(2, "byte", DataType.Number, true);
 
-			return PerformByteLike(vs, vi, vj,
-				i => Unicode2Ascii(i));
+			return PerformByteLike(vs, vi, vj, i => i & 0xFF);
 		}
 
 		[MoonSharpModuleMethod]
