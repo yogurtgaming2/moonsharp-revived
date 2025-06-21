@@ -1,5 +1,5 @@
 {
-  "name": "com.yogurtgaming2.moonsharp",
+  "name": "com.yogurtgaming2.moonsharp-unity",
   "version": "3.0.0",
   "displayName": "MoonSharp",
   "description": "Fork of MoonSharp for Unity, UPM-ready and up to date.",
@@ -13,6 +13,6 @@
   ],
   "author": {
     "name": "YogurtGaming2",
-    "url": "https://github.com/YogurtGaming2/unity-moonsharp"
+    "url": "https://github.com/yogurtgaming2/moonsharp-unity"
   }
 }

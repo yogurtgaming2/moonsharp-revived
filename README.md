@@ -1,4 +1,4 @@
-Unity-MoonSharp
+MoonSharp **Unity**
 =========
 https://www.moonsharp.org
 
@@ -13,7 +13,7 @@ This is a fork of MoonSharp that is tailored to Unity. as of June 2025, MoonShar
 > Click on the "**+**" button and select "***Install package from git URL...***"
 
 > ![Step 3](step3.png)  
-> Enter **`https://github.com/yogurtgaming2/unity-moonsharp.git`**
+> Enter **`https://github.com/yogurtgaming2/moonsharp-unity.git`**
 
 ## Usage in MonoBehaviour scripts
 
