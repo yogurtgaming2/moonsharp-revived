@@ -1,13 +1,11 @@
 Unity-MoonSharp
 =========
-https://www.moonsharp.org   
+https://www.moonsharp.org
 
-
-This is a fork of MoonSharp that is tailored for Unity projects. as of June 2025, MoonSharp is no longer available on the Unity Asset Store, and this fork provides a UPM-compatible package for devs who would like to continue using MoonSharp in their Unity project after it has been made unavailable.
-
+This is a fork of MoonSharp that is tailored to Unity. as of June 2025, MoonSharp is no longer available on the Unity Asset Store, and this fork provides a UPM-compatible package. I may also extend MoonSharp in this fork and add small improvements to it's API.
 
 ## Installing via *Unity Package Manager* 
-(Shown in *Unity 6 Preview*, version `6000.0.2f1`)
+*(Shown in **Unity 6 Preview**, version `6000.0.2f1`)*
 > ![Step 1](step1.png)  
 > Open **Window > Package Manager** in the Unity Editor
 
@@ -15,7 +13,7 @@ This is a fork of MoonSharp that is tailored for Unity projects. as of June 2025
 > Click on the "**+**" button and select "***Install package from git URL...***"
 
 > ![Step 3](step3.png)  
-> Enter **`https://github.com/YogurtGaming2/unity-moonsharp.git`**
+> Enter **`https://github.com/yogurtgaming2/unity-moonsharp.git`**
 
 ## Usage in MonoBehaviour scripts
 
@@ -38,11 +36,11 @@ void Start()
 		return fact(5)";
 	DynValue res = Script.RunString(script);
 	Debug.Log(res.Number);
-	}
+}
 ```
 For more in-depth tutorials, samples, etc. please refer to http://www.moonsharp.org/getting_started
 
-Features:
+## MoonSharp Features
 * 99% compatible with Lua 5.2 (with the only unsupported feature being weak tables support) 
 * Support for metalua style anonymous functions (lambda-style)
 * Easy to use API
@@ -62,8 +60,7 @@ Features:
 
 For highlights on differences between MoonSharp and standard Lua, see http://www.moonsharp.org/moonluadifferences
 
-
-**License**
+## License
 
 The program and libraries are released under a 3-clause BSD license - see the license section.
 
