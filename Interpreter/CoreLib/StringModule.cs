@@ -89,6 +89,7 @@ namespace MoonSharp.Interpreter.CoreLib
 			return PerformByteLike(vs, vi, vj, i => i & 0xFF);
 		}
 
+
 		[MoonSharpModuleMethod]
 		public static DynValue unicode(ScriptExecutionContext executionContext, CallbackArguments args)
 		{
@@ -99,26 +100,19 @@ namespace MoonSharp.Interpreter.CoreLib
 			return PerformByteLike(vs, vi, vj, i => i);
 		}
 
-		private static int Unicode2Ascii(int i)
-		{
-			if (i >= 0 && i < 255)
-				return i;
-
-			return (int)'?';
-		}
-
+		// Removed Unicode2Ascii(int i) due to a bug causing mapping to incorrect chararcters (https://github.com/moonsharp-devs/moonsharp/issues/317)
 		private static DynValue PerformByteLike(DynValue vs, DynValue vi, DynValue vj, Func<int, int> filter)
 		{
-            StringRange range = StringRange.FromLuaRange(vi, vj, null);
-            string s = range.ApplyToString(vs.String);
+			StringRange range = StringRange.FromLuaRange(vi, vj, null);
+			string s = range.ApplyToString(vs.String);
 
-            int length = s.Length;
+			int length = s.Length;
 			DynValue[] rets = new DynValue[length];
 
-            for (int i = 0; i < length; ++i)
-            {
-                rets[i] = DynValue.NewNumber(filter((int)s[i]));
-            }
+			for (int i = 0; i < length; ++i)
+			{
+				rets[i] = DynValue.NewNumber(filter((int)s[i]));
+			}
 
 			return DynValue.NewTuple(rets);
 		}
