@@ -9,6 +9,18 @@ namespace MoonSharp.Interpreter.CoreLib
 	[MoonSharpModule(Namespace = "json")]
 	public class JsonModule
 	{
+		// Compatibility with Lua
+		[MoonSharpModuleMethod]
+		public static DynValue decode(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return parse(executionContext, args);
+		}
+		[MoonSharpModuleMethod]
+		public static DynValue encode(ScriptExecutionContext executionContext, CallbackArguments args)
+		{
+			return serialize(executionContext, args);
+		}
+
 		[MoonSharpModuleMethod]
 		public static DynValue parse(ScriptExecutionContext executionContext, CallbackArguments args)
 		{

@@ -13,11 +13,13 @@ namespace MoonSharp.Interpreter.Tree
 		int m_Col = 0;
 		int m_SourceId;
 		bool m_AutoSkipComments = false;
+		bool m_jsonContext = false;
 
-		public Lexer(int sourceID, string scriptContent, bool autoSkipComments)
+		public Lexer(int sourceID, string scriptContent, bool autoSkipComments, bool jsonContext = false)
 		{
 			m_Code = scriptContent;
 			m_SourceId = sourceID;
+			m_jsonContext = jsonContext;
 
 			// remove unicode BOM if any
 			if (m_Code.Length > 0 && m_Code[0] == 0xFEFF)
@@ -190,6 +192,10 @@ namespace MoonSharp.Interpreter.Tree
 						{
 							return ReadComment(fromLine, fromCol);
 						}
+						else if (m_jsonContext)
+						{
+							return ReadNumberToken(fromLine, fromCol, false, true);
+						}
 						else
 						{
 							return CreateToken(TokenType.Op_MinusOrSub, fromLine, fromCol, "-");
@@ -323,7 +329,7 @@ namespace MoonSharp.Interpreter.Tree
 			}
 		}
 
-		private Token ReadNumberToken(int fromLine, int fromCol, bool leadingDot)
+		private Token ReadNumberToken(int fromLine, int fromCol, bool leadingDot, bool negative = false)
 		{
 			StringBuilder text = new StringBuilder(32);
 
@@ -344,6 +350,10 @@ namespace MoonSharp.Interpreter.Tree
 			bool exponentPart = false;
 			bool exponentSignAllowed = false;
 
+			if (negative)
+			{
+				text.Append("-");
+			}
 			if (leadingDot)
 			{
 				text.Append("0.");
