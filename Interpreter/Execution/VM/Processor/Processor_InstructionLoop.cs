@@ -1262,7 +1262,6 @@ namespace MoonSharp.Interpreter.Execution.VM
 				if (h.Type == DataType.Function || h.Type == DataType.ClrFunction)
 				{
 					if (isMultiIndex) throw new ScriptRuntimeException("cannot multi-index through metamethods. userdata expected");
-					m_ValueStack.Pop(); // burn extra value ?
 
 					m_ValueStack.Push(h);
 					m_ValueStack.Push(obj);
@@ -1291,8 +1290,9 @@ namespace MoonSharp.Interpreter.Execution.VM
 			DynValue originalIdx = i.Value ?? m_ValueStack.Pop();
 			DynValue idx = originalIdx.ToScalar();
 			DynValue obj = m_ValueStack.Pop().ToScalar();
-
 			DynValue h = null;
+			DynValue savedIdx = idx;
+			DynValue savedObj = obj;
 
 
 			while (nestedMetaOps > 0)
@@ -1348,8 +1348,8 @@ namespace MoonSharp.Interpreter.Execution.VM
 				{
 					if (isMultiIndex) throw new ScriptRuntimeException("cannot multi-index through metamethods. userdata expected");
 					m_ValueStack.Push(h);
-					m_ValueStack.Push(obj);
-					m_ValueStack.Push(idx);
+					m_ValueStack.Push(savedObj);
+					m_ValueStack.Push(savedIdx);
 					return Internal_ExecCall(2, instructionPtr);
 				}
 				else
