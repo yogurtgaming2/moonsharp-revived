@@ -1,8 +1,12 @@
-MoonSharp Unity
+MoonSharp Revived
 =========
 https://www.moonsharp.org
 
-This is a fork of MoonSharp that is tailored to Unity. as of June 2025, MoonSharp is no longer available on the Unity Asset Store, and this fork provides a UPM-compatible package. I may also extend MoonSharp in this fork and add small improvements to it's API.
+This is a fork of the original MoonSharp Lua interpreter for C#. This fork focuses on fixing MoonSharp's long-standing bugs, extending MoonSharp functionality, and improving its compatibility with standard Lua (especially Lua 5.2 behavior).
+
+As of June 2025, the original MoonSharp is no longer available on the Unity Asset Store, and so this fork provides a UPM-compatible package.
+
+
 
 ## Installing via *Unity Package Manager* 
 *(Shown in **Unity 6 Preview**, version `6000.0.2f1`)*
@@ -13,9 +17,9 @@ This is a fork of MoonSharp that is tailored to Unity. as of June 2025, MoonShar
 > Click on the "**+**" button and select "***Install package from git URL...***"
 
 > ![Step 3](step3.png)  
-> Enter **`https://github.com/yogurtgaming2/moonsharp-unity.git`**
+> Enter **`https://github.com/yogurtgaming2/moonsharp-revived.git#unity`**
 
-## Usage in MonoBehaviour scripts
+## Usage in Unity
 
 Create a new script and include the MoonSharp namespace:
 ```csharp
