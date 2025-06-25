@@ -378,7 +378,7 @@ namespace MoonSharp.VsCodeDebugger.DebuggerLogic
 
 		public override void Threads(Response response, Table arguments)
 		{
-			var threads = new List<MoonSharp.VsCodeDebugger.SDK.Thread>() { new(0, "Main Thread") };
+			var threads = new List<Thread>() { new Thread(0, "Main Thread") };
 			SendResponse(response, new ThreadsResponseBody(threads));
 		}
 

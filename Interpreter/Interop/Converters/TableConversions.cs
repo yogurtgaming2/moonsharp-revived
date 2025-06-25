@@ -218,7 +218,7 @@ namespace MoonSharp.Interpreter.Interop.Converters
 		/// </summary>
 		internal static Dictionary<TK, TV> TableToDictionary<TK, TV>(Table table, Func<DynValue, TK> keyconverter, Func<DynValue, TV> valconverter)
 		{
-			Dictionary<TK, TV> dict = new();
+			Dictionary<TK, TV> dict = new Dictionary<TK, TV>();
 
 			foreach (var kvp in table.Pairs)
 			{
