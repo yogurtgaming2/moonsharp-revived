@@ -98,18 +98,31 @@ namespace MoonSharp.Interpreter.Tree.Statements
 					exp.Compile(bc);
 				}
 				int rhsCount = m_RValues.Count;
-				for (int i = m_LValues.Count - 1; i >= 0; i--)
+				// Left-To-Right loop
+				if (rhsCount > 1)
 				{
-					int rhsIdx = (i < rhsCount ? i : rhsCount - 1);
-					int stackOffset = (rhsCount - 1) - rhsIdx;
-					int tupleidx = 0;
-					stackOffset += (m_LValues.Count - 1 - i);
+					for (int i = m_LValues.Count - 1; i >= 0; i--)
+					{
+						int rhsIdx = i < rhsCount ? i : rhsCount - 1;
+						int stackOffset = rhsCount - 1 - rhsIdx;
+						int tupleidx = 0;
+						stackOffset += m_LValues.Count - 1 - i;
 
-					m_LValues[i].CompileAssignment(bc, stackOffset, tupleidx);
+						m_LValues[i].CompileAssignment(bc, stackOffset, tupleidx);
+					}
 				}
-				bc.Emit_Pop(m_RValues.Count);
+				// Right-To-Left loop
+				else
+				{
+					for (int i = 0; i < m_LValues.Count; i++)
+					{
+						m_LValues[i].CompileAssignment(bc,
+								Math.Max(rhsCount - 1 - i, 0), // index of r-value
+								i - Math.Min(i, rhsCount - 1)); // index in last tuple
+					}
+				}
+				bc.Emit_Pop(rhsCount);
 			}
 		}
-
 	}
 }
