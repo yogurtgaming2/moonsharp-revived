@@ -2,10 +2,25 @@ MoonSharp Revived
 =========
 https://www.moonsharp.org
 
-This is a fork of the original MoonSharp Lua interpreter for C#. This fork focuses on fixing MoonSharp's long-standing bugs, extending MoonSharp functionality, and improving its compatibility with standard Lua (especially Lua 5.2 behavior).
+This is a fork of the original MoonSharp Lua interpreter for C#. This fork focuses on fixing MoonSharp's long-standing bugs, extending MoonSharp functionality, and improving its compatibility with standard Lua (and especially Lua 5.2).
 
 As of June 2025, the original MoonSharp is no longer available on the Unity Asset Store, and so this fork provides a UPM-compatible package.
 
+I've tested this fork on Unity 6 and .NET 8, everything seems to work fine, other than a few warnings in the .NET project.
+
+### Comparison
+| Test Case                         | Lua 5.2             | Original MoonSharp         | MoonSharp Revived            |
+|----------------------------------|----------------------------|------------------------------|------------------------------|
+| **Char XOR**                | `test1234567890`           | `test123ô567890`             | `test1234567890`           |
+| **Regex Trim**                   | `padded string`        | `pattern too complex`      | `padded string`         |
+| **JSON Negative Integer**        | `-12345`                   | `Unexpected token: '-'`    | `-12345`                    |
+| **__newindex Assignment Order**  | `B 2` <br> `A 1`           | `A 1` <br> `B ⠀`             | `B 2` <br> `A 1`            |
+| **Byte String Roundtrip** | `0002405060FFFF`           | `00024050603F3F`           | `0002405060FFFF`           |
+
+| Feature           | Lua 5.2 (`dkjson`/`cjson`) | Original MoonSharp            | MoonSharp Revived                |
+|------------------|----------------------------------|----------------------------------|----------------------------------|
+| `json.decode()`  | Commonly Available          |  Only `json.parse()`  | Alias for `json.parse()`      |
+| `json.encode()`  | Commonly Available          |  Only `json.serialize()` | Alias for `json.serialize()`  |
 
 
 ## Installing via *Unity Package Manager* 
